@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="WindowsFontsMetrics.Controls.NumericUpDown"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:WindowsFontsMetrics.Controls"
+             x:Name="Instance"
+             mc:Ignorable="d"
+            >
+    <Grid Height="48" Margin="8,0,8,8" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="64"/>
+            <ColumnDefinition Width="64"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Label Content="{Binding Caption, ElementName=Instance}"  Foreground="WhiteSmoke" />
+            <Label Content="{Binding Description, ElementName=Instance}"  Foreground="WhiteSmoke" FontSize="14" FontWeight="Thin" Margin="0,-10,0,0"/>
+        </StackPanel>
+        <TextBlock Grid.Column="1" FontSize="20" Text="{Binding Value, Mode=TwoWay, ElementName=Instance}"  VerticalAlignment="Center"  Foreground="WhiteSmoke" Background="Transparent"/>
+        <Label Grid.Column="2" Content="pt" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+        <Button Grid.Column="3"  Margin="4" Style="{StaticResource ButtonRevealStyle}" Command="{Binding DecreaseValueCommand, ElementName=Instance}">
+            <md:PackIcon Kind="FormatFontSizeDecrease" Margin="0" Width="32" Height="32"/>
+        </Button>
+        <Button Grid.Column="4"  Margin="4" Style="{StaticResource ButtonRevealStyle}" Command="{Binding IncreaseValueCommand, ElementName=Instance}">
+            <md:PackIcon Kind="FormatFontSizeIncrease" Margin="0" Width="32" Height="32"/>
+        </Button>
+    </Grid>
+</UserControl>
