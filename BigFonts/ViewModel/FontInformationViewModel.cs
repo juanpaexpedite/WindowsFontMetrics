@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using static WindowsFontsMetrics.Converters.WindowParametersConverter;
 using static WindowsFontsMetrics.Services.WindowsMetricsService;
+using WPFCore;
+using WindowsFontsMetrics.Views;
 
 namespace WindowsFontsMetrics.ViewModel
 {
@@ -225,7 +227,7 @@ namespace WindowsFontsMetrics.ViewModel
         {
             return new DelegateCommand(() =>
             {
-                WPFService.ShowDonateDialogBox();
+                WPFService.ShowDialogBox<DonateView>();
             });
         }
         #endregion

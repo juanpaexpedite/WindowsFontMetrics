@@ -44,13 +44,13 @@
             <ctl:NumericUpDown Caption="{Binding BorderInformation.Name}" Description="{Binding BorderInformation.Description}" Value="{Binding BorderInformation.Size, Mode=TwoWay}" MinValue="0" MaxValue="20"/>
         </StackPanel>
         <Grid Grid.RowSpan="2" Grid.Column="1" Margin="12">
-            <Button Cursor="Hand" ToolTip="Back to original Windows values." Style="{StaticResource ButtonRoundRevealStyle}" Width="48" Height="48" Command="{Binding ReadSettingsCommand}"  VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Button Cursor="Hand" ToolTip="Back to original Windows values." Style="{StaticResource ButtonRoundRevealStyle}" Width="64" Height="64" Command="{Binding ReadSettingsCommand}"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,74">
                 <TextBlock Text="Original" FontSize="12"/>
             </Button>
             <Button Cursor="Hand" Style="{StaticResource ButtonRoundRevealStyle}" Width="64" Height="64" Command="{Binding ApplyCommand}"  VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 <TextBlock Text="Apply"/>
             </Button>
-            <Button Cursor="Hand" ToolTip="Open Window about and how to donate to create more interesting&#x0a;free and open source apps." Style="{StaticResource ButtonRoundRevealStyle}" Width="64" Height="64" Command="{Binding DonateCommand}"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,80">
+            <Button Cursor="Hand" ToolTip="Open Window about and how to donate to create more interesting&#x0a;free and open source apps." Style="{StaticResource ButtonRoundRevealStyle}" Width="64" Height="64" Command="{Binding DonateCommand}"  VerticalAlignment="Top" HorizontalAlignment="Right">
                 <Image Source="Assets/doge_smoll.png" />
             </Button>
         </Grid>

@@ -1,12 +1,9 @@
-﻿using WindowsFontsMetrics.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
+using System.Windows.Documents;
+using System.Diagnostics;
 
-namespace WindowsFontsMetrics.Services
+namespace WPFCore
 {
     public class WPFService
     {
@@ -29,11 +26,45 @@ namespace WindowsFontsMetrics.Services
             owner = mainwindow;
         }
 
-        public static void ShowDonateDialogBox()
+        public static void ShowDialogBox<T>() where T : Window
         {
-            var dlg = new DonateView() { Owner = owner };
+            var dlg = Activator.CreateInstance<T>();
+            dlg.Owner = owner;
 
             dlg.ShowDialog();
         }
+
+        #region HyperLink Navigation Attached Property
+
+        public static string Navigate = String.Empty;
+
+        public static bool GetNavigate(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(NavigateProperty);
+        }
+
+        public static void SetNavigate(DependencyObject obj, bool value)
+        {
+            obj.SetValue(NavigateProperty, value);
+        }
+        public static readonly DependencyProperty NavigateProperty =
+            DependencyProperty.RegisterAttached(nameof(Navigate), typeof(bool), typeof(WPFService), new UIPropertyMetadata(false, OnNavigateChanged));
+
+        private static void OnNavigateChanged(object sender, DependencyPropertyChangedEventArgs args)
+        {
+            var hyperlink = sender as Hyperlink;
+
+            if (args.NewValue is bool bargs)
+                hyperlink.RequestNavigate += Hyperlink_RequestNavigate;
+            else
+                hyperlink.RequestNavigate -= Hyperlink_RequestNavigate;
+        }
+
+        private static void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+        #endregion
     }
 }

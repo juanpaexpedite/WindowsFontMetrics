@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:local="clr-namespace:WindowsFontsMetrics.Views"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
+        xmlns:wpfcore="clr-namespace:WPFCore"
         fw:AcrylicWindow.Enabled="True" 
         FontSize="16" 
         WindowStyle="SingleBorderWindow" AllowsTransparency="False" ResizeMode="NoResize"
@@ -23,7 +24,7 @@
             <TextBlock Margin="8,0,0,0" TextWrapping="Wrap" Text="I have several projects I am going to release for free and open source like a Games Encyclopedia, Super Image Searcher, Tech learn apps, Freecad models and more." FontSize="20" Foreground="WhiteSmoke"/>
             <TextBlock Margin="8,8,0,0" TextWrapping="Wrap"  FontSize="20" Foreground="WhiteSmoke">
                 The main reason is because the app stores are out of control. I preffer to share software that helps than to earn money in my repo at
-                <Hyperlink NavigateUri="https://github.com/juanpaexpedite" >
+                <Hyperlink NavigateUri="https://github.com/juanpaexpedite" wpfcore:WPFService.Navigate="True">
                     https://github.com/juanpaexpedite
                 </Hyperlink>
             </TextBlock>
@@ -32,9 +33,9 @@
         </StackPanel>
 
         <Image Grid.Column="1" Source="/WindowsFontsMetrics;component/Assets/doge_qr.png" Stretch="Uniform" Width="128" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-        <Button Grid.Row="1" HorizontalAlignment="Left" Click="CopyWallet_Click" Width="224" Height="64" Content="Copy Wallet Address"  Margin="12" Style="{StaticResource ButtonRevealStyle}" Command="{Binding DecreaseValueCommand, ElementName=Instance}" FontSize="20"/>
+        <Button Grid.Row="1" HorizontalAlignment="Left" Click="CopyWallet_Click" Width="224" Height="64" Content="Copy Wallet Address"  Margin="12" Style="{StaticResource ButtonRevealStyle}" FontSize="20"/>
         <Label x:Name="LabelCopied" Visibility="Hidden" Content="Copied" Grid.Row="1" VerticalAlignment="Center" Margin="260,0,0,0" HorizontalAlignment="Left" Foreground="WhiteSmoke"/>
-        <Button Grid.Row="1"  HorizontalAlignment="Right" Click="Close_Click" Width="128" Height="64" Content="Close"  Margin="12" Style="{StaticResource ButtonRevealStyle}" Command="{Binding DecreaseValueCommand, ElementName=Instance}" FontSize="20"/>
+        <Button Grid.Row="1"  HorizontalAlignment="Right" Click="Close_Click" Width="128" Height="64" Content="Close"  Margin="12" Style="{StaticResource ButtonRevealStyle}"  FontSize="20"/>
 
 
     </Grid>
